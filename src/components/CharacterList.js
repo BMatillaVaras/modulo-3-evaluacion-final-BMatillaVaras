@@ -1,5 +1,6 @@
 import React from "react";
 import CharacterCard from "./CharacterCard";
+import "../stylesheets/_characterList.scss";
 
 class CharacterList extends React.Component {
   render() {
@@ -10,7 +11,7 @@ class CharacterList extends React.Component {
         </li>
       );
     });
-    return <ul>{characters}</ul>;
+    return <ul className="list">{characters}</ul>;
   }
 }
 

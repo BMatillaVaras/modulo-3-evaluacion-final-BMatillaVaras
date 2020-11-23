@@ -15,10 +15,10 @@ const App = () => {
   console.log(characters);
 
   return (
-    <>
+    <body className="app">
       <Header />
       <Main characters={characters} />
-    </>
+    </body>
   );
 };
 

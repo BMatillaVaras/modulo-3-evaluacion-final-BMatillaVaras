@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+
+  &__label {
+    color: greenyellow;
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 23px;
+    margin-right: 10px;
+  }
+  &__input {
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 23px;
+    height: 35px;
+    background-color: black;
+    border: 1px solid greenyellow;
+    border-radius: 5px;
+    padding-left: 10px;
+    color: greenyellow;
+    outline: none;
+    &::placeholder {
+      color: rgb(165, 179, 143);
+    }
+  }
+}

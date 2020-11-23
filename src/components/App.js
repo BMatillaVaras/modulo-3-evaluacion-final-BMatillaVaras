@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Header from "./Header";
 import "../stylesheets/App.scss";
+import api from "../services/api";
+import Main from "./Main";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const App = () => {
+  const [characters, setCharacters] = useState([]);
 
-  render() {
-    return (
-      <div className="App">
-        <h1>Hola mundo</h1>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    api.getDataFromApi().then((data) => {
+      setCharacters(data);
+    });
+  }, []);
+  console.log(characters);
+
+  return (
+    <>
+      <Header />
+      <Main characters={characters} />
+    </>
+  );
+};
 
 export default App;

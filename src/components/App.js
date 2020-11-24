@@ -6,19 +6,32 @@ import Main from "./Main";
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
+  const [filterText, setFilterText] = useState("");
 
   useEffect(() => {
     api.getDataFromApi().then((data) => {
       setCharacters(data);
     });
   }, []);
-  console.log(characters);
+
+  const handleFilter = (filterText) => {
+    setFilterText(filterText);
+  };
+  console.log(filterText);
+
+  const filteredCharacters = characters.filter((character) => {
+    return character.name.toLowerCase().includes(filterText.toLowerCase());
+  });
 
   return (
-    <body className="app">
+    <div className="app">
       <Header />
-      <Main characters={characters} />
-    </body>
+      <Main
+        characters={filteredCharacters}
+        handleFilter={handleFilter}
+        filterText={filterText}
+      />
+    </div>
   );
 };
 

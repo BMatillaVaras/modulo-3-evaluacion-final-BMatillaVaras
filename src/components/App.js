@@ -20,6 +20,12 @@ const App = () => {
     setFilterText(filterText);
   };
 
+  characters.sort(function (prevName, nextName) {
+    if (prevName.name < nextName.name) return -1;
+    if (prevName.name > nextName.name) return 1;
+    return 0;
+  });
+
   const filteredCharacters = characters.filter((character) => {
     return character.name.toLowerCase().includes(filterText.toLowerCase());
   });

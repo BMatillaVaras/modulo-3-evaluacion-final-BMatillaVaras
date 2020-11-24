@@ -13,7 +13,7 @@ class CharacterCard extends React.Component {
           <article>
             <img
               src={this.props.character.image}
-              alt=""
+              alt={this.props.character.name}
               className="list__article--img"
             />
             <h3 className="list__article--title">

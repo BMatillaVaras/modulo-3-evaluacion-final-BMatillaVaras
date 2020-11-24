@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Header from "./Header";
+import CharacterDetail from "./CharacterDetail";
 import "../stylesheets/App.scss";
 import api from "../services/api";
 import Main from "./Main";
@@ -18,11 +19,22 @@ const App = () => {
   const handleFilter = (filterText) => {
     setFilterText(filterText);
   };
-  console.log(filterText);
 
   const filteredCharacters = characters.filter((character) => {
     return character.name.toLowerCase().includes(filterText.toLowerCase());
   });
+
+  const renderCharacterDetail = (props) => {
+    const characterId = parseInt(props.match.params.id);
+    const foundCharacter = characters.find((character) => {
+      return characterId === character.id;
+    });
+    if (foundCharacter !== undefined) {
+      return <CharacterDetail character={foundCharacter} />;
+    } else {
+      return <p>No se ha encontrado el personaje</p>;
+    }
+  };
 
   return (
     <div className="app">
@@ -36,7 +48,7 @@ const App = () => {
               filterText={filterText}
             />
           </Route>
-          <Route path="/character-detail/:characterId " />
+          <Route path="/character-detail/:id" render={renderCharacterDetail} />
         </Switch>
       </main>
     </div>

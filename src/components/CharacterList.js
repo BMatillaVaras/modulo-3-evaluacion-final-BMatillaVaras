@@ -11,7 +11,15 @@ class CharacterList extends React.Component {
         </li>
       );
     });
-    return <ul className="list">{characters}</ul>;
+    return (
+      <section>
+        {characters.length !== 0 ? (
+          <ul className="list">{characters}</ul>
+        ) : (
+          <p className="notFound">Personaje no encontrado</p>
+        )}
+      </section>
+    );
   }
 }
 

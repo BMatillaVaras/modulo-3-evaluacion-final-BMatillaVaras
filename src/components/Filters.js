@@ -11,7 +11,7 @@ const Filters = (props) => {
   };
 
   return (
-    <form action="" className="form">
+    <form action="" className="form" onSubmit={handleFormSubmit}>
       <label htmlFor="character" className="form__label">
         Personaje:
       </label>
@@ -21,7 +21,6 @@ const Filters = (props) => {
         placeholder="Rick"
         className="form__input"
         onChange={handleFilter}
-        onSubmit={handleFormSubmit}
         value={props.filterText}
       />
     </form>

@@ -6,6 +6,22 @@ import "../stylesheets/_characterCard.scss";
 
 class CharacterDetail extends React.Component {
   render() {
+    const getStatus = () =>
+      this.props.character.status === "Alive" ? (
+        <i class="fas fa-heart"></i>
+      ) : this.props.character.status === "Dead" ? (
+        <i class="fas fa-skull-crossbones"></i>
+      ) : (
+        <i class="fas fa-question"></i>
+      );
+
+    const getSpecies = () =>
+      this.props.character.species === "Human" ? (
+        <i class="fas fa-user"></i>
+      ) : (
+        <i class="fab fa-reddit-alien"></i>
+      );
+
     return (
       <>
         <Link to="/">
@@ -19,6 +35,8 @@ class CharacterDetail extends React.Component {
             alt={this.props.character.name}
           />
           <h3 className="list__article--title">{this.props.character.name}</h3>
+          <span>{getStatus()}</span>
+          <span>{getSpecies()}</span>
           <ul>
             <li>Estado: {this.props.character.status}</li>
             <li>Especie: {this.props.character.species}</li>

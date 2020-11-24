@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
 import Header from "./Header";
 import "../stylesheets/App.scss";
 import api from "../services/api";
@@ -26,11 +27,18 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      <Main
-        characters={filteredCharacters}
-        handleFilter={handleFilter}
-        filterText={filterText}
-      />
+      <main>
+        <Switch>
+          <Route exact path="/">
+            <Main
+              characters={filteredCharacters}
+              handleFilter={handleFilter}
+              filterText={filterText}
+            />
+          </Route>
+          <Route path="/character-detail/:characterId " />
+        </Switch>
+      </main>
     </div>
   );
 };

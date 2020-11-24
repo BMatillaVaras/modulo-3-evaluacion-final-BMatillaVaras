@@ -6,7 +6,11 @@ class Header extends React.Component {
   render() {
     return (
       <header className="header">
-        <img src={logo} alt="" />
+        <img
+          src={logo}
+          alt="logo de la serie Rick and Morty"
+          title="logo de la serie Rick and Morty"
+        />
       </header>
     );
   }

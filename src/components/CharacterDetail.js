@@ -24,7 +24,7 @@ class CharacterDetail extends React.Component {
 
     return (
       <>
-        <Link to="/">
+        <Link to="/" alt="volver a la Home">
           <span className="close">X</span>
         </Link>
 
@@ -32,7 +32,8 @@ class CharacterDetail extends React.Component {
           <img
             src={this.props.character.image}
             className="list__article--img"
-            alt={this.props.character.name}
+            alt={`imagen de ${this.props.character.name}`}
+            title={`imagen de ${this.props.character.name}`}
           />
           <h3 className="list__article--title">{this.props.character.name}</h3>
           <span>{getStatus()}</span>

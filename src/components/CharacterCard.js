@@ -9,11 +9,13 @@ class CharacterCard extends React.Component {
         <Link
           to={`/character-detail/${this.props.character.id}`}
           className="list__article"
+          alt="ir a los detalles del personaje "
         >
           <article>
             <img
               src={this.props.character.image}
-              alt={this.props.character.name}
+              alt={`imagen de ${this.props.character.name}`}
+              title={`imagen de ${this.props.character.name}`}
               className="list__article--img"
             />
             <h3 className="list__article--title">

@@ -18,6 +18,4 @@ const getDataFromApi = () => {
     });
 };
 
-export default {
-  getDataFromApi: getDataFromApi,
-};
+export default { getDataFromApi };

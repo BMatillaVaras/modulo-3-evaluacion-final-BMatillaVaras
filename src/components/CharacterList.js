@@ -1,5 +1,6 @@
 import React from "react";
 import CharacterCard from "./CharacterCard";
+import notFound from "../images/notFound.png";
 import "../stylesheets/_characterList.scss";
 import PropTypes from "prop-types";
 
@@ -13,11 +14,18 @@ class CharacterList extends React.Component {
       );
     });
     return (
-      <section>
+      <section className="section">
         {characters.length !== 0 ? (
           <ul className="list">{characters}</ul>
         ) : (
-          <p className="notFound">Personaje no encontrado</p>
+          <div className="alternative">
+            <h3 className="alternative__text">Personaje no encontrado</h3>
+            <img
+              src={notFound}
+              alt="personaje no encontrado"
+              className="alternative__img"
+            />
+          </div>
         )}
       </section>
     );

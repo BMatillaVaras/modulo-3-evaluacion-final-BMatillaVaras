@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import portal from "../images/portal.png";
 import "../stylesheets/_characterDetail.scss";
 import PropTypes from "prop-types";
 
@@ -7,44 +8,64 @@ class CharacterDetail extends React.Component {
   render() {
     const getStatus = () =>
       this.props.character.status === "Alive" ? (
-        <i class="fas fa-heart"></i>
+        <i className="fas fa-heart"></i>
       ) : this.props.character.status === "Dead" ? (
-        <i class="fas fa-skull-crossbones"></i>
+        <i className="fas fa-skull-crossbones"></i>
       ) : (
-        <i class="fas fa-question"></i>
+        <i className="fas fa-question"></i>
       );
 
     const getSpecies = () =>
       this.props.character.species === "Human" ? (
-        <i class="fas fa-user"></i>
+        <i className="fas fa-user"></i>
       ) : (
-        <i class="fab fa-reddit-alien"></i>
+        <i className="fab fa-reddit-alien"></i>
       );
 
     return (
-      <>
-        <Link to="/" alt="volver a la Home">
-          <span className="close">X</span>
+      <div className="detail">
+        <Link to="/" alt="volver a la Home" className="detail__return">
+          <img
+            src={portal}
+            alt="Volver al inicio"
+            className="detail__return--img"
+          />
+          <p className="detail__return--text">Volver al inicio</p>
         </Link>
 
-        <article className="list__article">
+        <article className="detail__article">
           <img
             src={this.props.character.image}
-            className="list__article--img"
+            className="detail__article--img"
             alt={`imagen de ${this.props.character.name}`}
             title={`imagen de ${this.props.character.name}`}
           />
-          <h3 className="list__article--title">{this.props.character.name}</h3>
-          <span>{getStatus()}</span>
-          <span>{getSpecies()}</span>
-          <ul>
-            <li>Estado: {this.props.character.status}</li>
-            <li>Especie: {this.props.character.species}</li>
-            <li>Origen: {this.props.character.origin}</li>
-            <li>Episodios: {this.props.character.episode}</li>
-          </ul>
+          <div>
+            <div className="detail__article--title">
+              <h3>{this.props.character.name}</h3>
+              <div>
+                <span className="detail__article--icons">{getStatus()}</span>
+                <span className="detail__article--icons">{getSpecies()}</span>
+              </div>
+            </div>
+
+            <ul className="detail__article--list">
+              <li className="detail__article--listItem">
+                Estado: {this.props.character.status}
+              </li>
+              <li className="detail__article--listItem">
+                Especie: {this.props.character.species}
+              </li>
+              <li className="detail__article--listItem">
+                Origen: {this.props.character.origin}
+              </li>
+              <li className="detail__article--listItem">
+                Episodios: {this.props.character.episodes.length}
+              </li>
+            </ul>
+          </div>
         </article>
-      </>
+      </div>
     );
   }
 }

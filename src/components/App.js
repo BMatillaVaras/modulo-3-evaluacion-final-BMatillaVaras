@@ -41,6 +41,7 @@ const App = () => {
       return <p>No se ha encontrado el personaje</p>;
     }
   };
+  console.log(filteredCharacters);
 
   return (
     <div className="app">

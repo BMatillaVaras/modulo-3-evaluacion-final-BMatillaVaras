@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../stylesheets/_characterCard.scss";
+import PropTypes from "prop-types";
 
 class CharacterCard extends React.Component {
   render() {
@@ -30,5 +31,9 @@ class CharacterCard extends React.Component {
     );
   }
 }
+
+CharacterCard.propTypes = {
+  character: PropTypes.object.isRequired,
+};
 
 export default CharacterCard;

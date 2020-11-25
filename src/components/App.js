@@ -5,17 +5,24 @@ import CharacterDetail from "./CharacterDetail";
 import "../stylesheets/App.scss";
 import api from "../services/api";
 import Main from "./Main";
+import Loading from "./Loading";
 
 const App = () => {
+  //state
   const [characters, setCharacters] = useState([]);
   const [filterText, setFilterText] = useState("");
+  const [loading, setLoading] = useState(false);
 
+  //life cycle
   useEffect(() => {
+    setLoading(true);
     api.getDataFromApi().then((data) => {
       setCharacters(data);
+      setLoading(false);
     });
   }, []);
 
+  //filter
   const handleFilter = (filterText) => {
     setFilterText(filterText);
   };
@@ -30,6 +37,7 @@ const App = () => {
     return character.name.toLowerCase().includes(filterText.toLowerCase());
   });
 
+  // character detail
   const renderCharacterDetail = (props) => {
     const characterId = parseInt(props.match.params.id);
     const foundCharacter = characters.find((character) => {
@@ -41,12 +49,12 @@ const App = () => {
       return <p>No se ha encontrado el personaje</p>;
     }
   };
-  console.log(filteredCharacters);
 
   return (
     <div className="app">
       <Header />
       <main>
+        {loading === true ? <Loading></Loading> : null}
         <Switch>
           <Route exact path="/">
             <Main

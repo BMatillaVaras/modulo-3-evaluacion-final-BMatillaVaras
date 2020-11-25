@@ -19,10 +19,9 @@ src
 │ ├── CharacterList.js
 │ ├── Filters.js
 │ ├── Header.js
+│ ├── Loading.js
 │ └── Main.js
 ├── images
-│ ├── fondo.jpg
-│ └── logo.png
 |── services
 │ └── api.js
 ├── stylesheets
@@ -31,6 +30,7 @@ src
 │ ├── \_characterList.scss
 │ ├── \_filters.scss
 │ |── \_header.scss
+│ |── \_loading.scss
 │ └── App.scss
 ├── index.css
 └── index.js
@@ -57,8 +57,6 @@ npm start
 
 Si quieres publicar el proyecto, utiliza el comando:
 
-````
+```
 npm run docs
 ```
-
-````

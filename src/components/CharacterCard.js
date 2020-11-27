@@ -25,6 +25,9 @@ class CharacterCard extends React.Component {
             <p className="list__article--text">
               {this.props.character.species}
             </p>
+            <p className="form__label">
+              {this.props.character.episodes.length}
+            </p>
           </article>
         </Link>
       </>

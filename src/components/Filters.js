@@ -4,7 +4,11 @@ import PropTypes from "prop-types";
 
 const Filters = (props) => {
   const handleFilter = (ev) => {
-    props.handleFilter(ev.target.value);
+    const data = {
+      id: ev.target.id,
+      value: ev.target.value,
+    };
+    props.handleFilter(data);
   };
 
   const handleFormSubmit = (ev) => {
@@ -23,6 +27,16 @@ const Filters = (props) => {
         className="form__input"
         onChange={handleFilter}
         value={props.filterText}
+      />
+      <label htmlFor="episodes" className="form__label">
+        Episodios
+      </label>
+      <input
+        type="number"
+        id="episodes"
+        className="form__input"
+        onChange={handleFilter}
+        value={props.episodes}
       />
     </form>
   );

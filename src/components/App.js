@@ -12,6 +12,7 @@ const App = () => {
   const [characters, setCharacters] = useState([]);
   const [filterText, setFilterText] = useState("");
   const [loading, setLoading] = useState(false);
+  const [episodes, setEpisodes] = useState("");
 
   //life cycle
   useEffect(() => {
@@ -23,8 +24,13 @@ const App = () => {
   }, []);
 
   //filter
-  const handleFilter = (filterText) => {
-    setFilterText(filterText);
+  const handleFilter = (data) => {
+    const { id, value } = data;
+    if (id === "character") {
+      setFilterText(value);
+    } else if (id === "episodes") {
+      setEpisodes(value);
+    }
   };
 
   characters.sort(function (prevName, nextName) {
@@ -33,9 +39,16 @@ const App = () => {
     return 0;
   });
 
-  const filteredCharacters = characters.filter((character) => {
-    return character.name.toLowerCase().includes(filterText.toLowerCase());
-  });
+  const filteredCharacters = characters
+    .filter((character) => {
+      return character.name.toLowerCase().includes(filterText.toLowerCase());
+    })
+    .filter((character) => {
+      if (episodes === "") {
+        return character;
+      }
+      return character.episodes.length === parseInt(episodes);
+    });
 
   // character detail
   const renderCharacterDetail = (props) => {
@@ -61,6 +74,7 @@ const App = () => {
               characters={filteredCharacters}
               handleFilter={handleFilter}
               filterText={filterText}
+              episodes={episodes}
             />
           </Route>
           <Route path="/character-detail/:id" render={renderCharacterDetail} />

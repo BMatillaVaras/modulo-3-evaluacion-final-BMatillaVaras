@@ -11,6 +11,7 @@ const App = () => {
   //state
   const [characters, setCharacters] = useState([]);
   const [filterText, setFilterText] = useState("");
+  const [species, setSpecies] = useState("all");
   const [loading, setLoading] = useState(false);
 
   //life cycle
@@ -23,8 +24,14 @@ const App = () => {
   }, []);
 
   //filter
-  const handleFilter = (filterText) => {
-    setFilterText(filterText);
+  const handleFilter = (data) => {
+    const { id, value } = data;
+    if (id === "character") {
+      setFilterText(value);
+    }
+    if (id === "species") {
+      setSpecies(value);
+    }
   };
 
   characters.sort(function (prevName, nextName) {
@@ -33,10 +40,15 @@ const App = () => {
     return 0;
   });
 
-  const filteredCharacters = characters.filter((character) => {
-    return character.name.toLowerCase().includes(filterText.toLowerCase());
-  });
-
+  const filteredCharacters = () => {
+    const filterCharacters = characters
+      .filter((character) => {
+        return character.name.toLowerCase().includes(filterText.toLowerCase());
+      })
+      .filter((character) => {
+        return species === "all" || character.species.toLowerCase() === species;
+      });
+  };
   // character detail
   const renderCharacterDetail = (props) => {
     const characterId = parseInt(props.match.params.id);
@@ -61,6 +73,7 @@ const App = () => {
               characters={filteredCharacters}
               handleFilter={handleFilter}
               filterText={filterText}
+              species={species}
             />
           </Route>
           <Route path="/character-detail/:id" render={renderCharacterDetail} />

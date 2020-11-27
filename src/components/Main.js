@@ -9,6 +9,7 @@ const Main = (props) => {
       <Filters
         handleFilter={props.handleFilter}
         filterText={props.filterText}
+        species={props.species}
       />
       <CharacterList characters={props.characters} />
     </>

@@ -33,13 +33,12 @@ const App = () => {
     }
   };
 
-  characters.sort(function (prevName, nextName) {
-    if (prevName.name < nextName.name) return -1;
-    if (prevName.name > nextName.name) return 1;
-    return 0;
-  });
-
   const filteredCharacters = characters
+    .sort(function (prevName, nextName) {
+      if (prevName.name < nextName.name) return -1;
+      if (prevName.name > nextName.name) return 1;
+      return 0;
+    })
     .filter((character) => {
       return character.name.toLowerCase().includes(filterText.toLowerCase());
     })
